@@ -1,4 +1,25 @@
-img {
-  box-shadow: 15px 15px 0 #ea987e;
-  /* box-shadow: -15px -15px 0 #ea987e;  写真の左上にボックスを配置する場合 */
+.pic {
+  position: relative; /* 疑似要素の基準 */
+}
+
+.pic img {
+  position: relative; /* z-index を効かせるために必要 */
+  z-index: 2; /* 画像を斜線の上の階層に表示させる */
+}
+
+.pic::before {
+  content: '';
+  position: absolute;
+  bottom: -15px; /* 基準の下から15px分移動させる */
+  right: 280px; /* 基準の右から280px分移動させる */
+  width: 20%; /* 包括する親要素の横サイズ20% */
+  height: 100%; /* 包括する親要素の縦サイズ100% */
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #d34e23 0px,
+    #d34e23 2px,
+    rgba(0 0 0 / 0) 0%,
+    rgba(0 0 0 / 0) 3%
+  );
+  z-index: 1;
 }
